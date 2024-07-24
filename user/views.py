@@ -6,4 +6,4 @@ def register(request):
     return render(request, 'user/register.html')
 
 def loginn(request):
-    return HttpResponse('Login Here')
+    return render(request, 'user/login.html')
