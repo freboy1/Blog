@@ -9,3 +9,8 @@ def home(request):
     blogs = Blog.objects.all()
     context = {'blogs': blogs}
     return render(request, 'blog/home.html', context)
+
+def blog(request, id):
+    blogs = Blog.objects.filter(id=id)
+    context = {'blogs': blogs}
+    return render(request, 'blog/blog.html', context)
