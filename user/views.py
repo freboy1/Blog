@@ -13,7 +13,7 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('user:login')
 
 
     context = {'form': form}
@@ -42,4 +42,4 @@ def loginn(request):
 @login_required(login_url='login')
 def my_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('user:login')
