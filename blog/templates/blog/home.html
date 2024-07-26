@@ -4,7 +4,7 @@
 <ul>
     {% for blog in blogs %}
     <li>
-        <a href="{% url "blog" {{blog.id}} %}">{{blog}}</a>
+        <a href="{% url "blog" blog.id %}">{{blog}}</a>
         <br>
     </li>
     {% endfor %}
