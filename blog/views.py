@@ -13,6 +13,13 @@ def home(request):
 def blog(request, id):
     blogs = Blog.objects.get(id=id)
     form = BlogForm(instance=blogs)
+
+    if request.method == 'POST':
+        form = BlogForm(request.POST, instance=blogs)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
     context = {'form': form}
     return render(request, 'blog/blog.html', context)
 
