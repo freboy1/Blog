@@ -1,5 +1,5 @@
 <h1>Add Blog</h1>
-
+<a href="{% url "home" %}">Go back</a>
 <form action="" method="POST">
     {% csrf_token %}
     {{form.as_p}}
