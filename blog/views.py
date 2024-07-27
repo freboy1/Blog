@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import Blog
 from .forms import BlogForm
@@ -17,5 +17,15 @@ def blog(request, id):
 
 def blog_add(request):
     form = BlogForm()
+
+    if request.method == 'POST':
+        form = BlogForm(request.POST)
+        form.user = request.user
+
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+
     context = {'form': form}
     return render(request, 'blog/blog_add.html', context)
