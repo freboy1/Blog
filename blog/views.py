@@ -37,3 +37,8 @@ def blog_add(request):
 
     context = {'form': form}
     return render(request, 'blog/blog_add.html', context)
+
+def blog_delete(request, id):
+    blogs = Blog.objects.get(id=id)
+    blogs.delete()
+    return redirect('home')
