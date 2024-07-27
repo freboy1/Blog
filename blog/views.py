@@ -11,8 +11,9 @@ def home(request):
     return render(request, 'blog/home.html', context)
 
 def blog(request, id):
-    blogs = Blog.objects.filter(id=id)
-    context = {'blogs': blogs}
+    blogs = Blog.objects.get(id=id)
+    form = BlogForm(instance=blogs)
+    context = {'form': form}
     return render(request, 'blog/blog.html', context)
 
 def blog_add(request):
