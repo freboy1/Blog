@@ -20,7 +20,7 @@ def blog(request, id):
             form.save()
             return redirect('home')
 
-    context = {'form': form}
+    context = {'form': form, 'blog': blogs}
     return render(request, 'blog/blog.html', context)
 
 def blog_add(request):
